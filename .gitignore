@@ -1,0 +1,6 @@
+node_modules
+.serverless
+__pycache__
+venv
+.python-version
+.requirements.zip
