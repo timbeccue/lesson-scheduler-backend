@@ -23,7 +23,9 @@ custom:
 provider:
   name: aws
   runtime: python3.9
+  region: us-east-1
   profile: personal
+  stackName: lesson-scheduler-serverless-backend
 
 functions:
   api:

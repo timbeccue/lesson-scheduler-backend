@@ -1,0 +1,37 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Check out repository
+      uses: actions/checkout@v1
+
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    
+    - name: Set up Environment
+      run: npm ci
+    - name: Install Plugins
+      run: npx serverless plugin install --name serverless-python-requirements && npx serverless plugin install --name serverless-domain-manager serverless-domain-manager && npx serverless plugin install --name serverless-wsgi
+
+    - name: Configure the AWS profile
+      run: serverless config credentials --provider aws --key ${{ secrets.SLS_AWS_ACCESS_KEY_ID }} --secret ${{ secrets.SLS_AWS_SECRET_ACCESS_KEY }} --profile personal
+
+    - name: Serverless Deploy
+      run: npx serverless deploy
+      env:
+        SERVERLESS_ACCESS_KEY: ${{ secrets.SLS_SECRET_KEY }}
