@@ -1,6 +1,6 @@
 org: timbeccue
 app: lesson-scheduler-flask
-service: lesson-scheduler-test
+service: lesson-scheduler-backend
 
 frameworkVersion: '3'
 

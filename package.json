@@ -1,7 +1,7 @@
 {
-  "name": "lesson-scheduler-test",
+  "name": "lesson-scheduler-backend",
   "version": "1.0.0",
-  "description": "Example of a Python Flask API service with traditional Serverless Framework",
+  "description": "Backend for scheduling lesson times",
   "author": "",
   "devDependencies": {
     "serverless-python-requirements": "^6.0.0",
